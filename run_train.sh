@@ -1,0 +1,21 @@
+python 4_train.py --experiments_path /home/bryant/experiments \
+                  --experiment_name Spell-Correction-Generation \
+                  --run_name flan-t5-small-1 \
+                  --model_path models/best_model \
+                  --train_file program_data/train/dataset.csv \
+                  --validation_file program_data/validation/dataset.csv \
+                  --test_file program_data/test/dataset.csv \
+                  --log_file train.log \
+                  --input_column input \
+                  --output_column output \
+                  --pretrained_model_name_or_path google/flan-t5-small \
+                  --batch_size 16 \
+                  --learning_rate 1e-4 \
+                  --epochs 10 \
+                  --max_length 128 \
+                  --warmup_ratio 0.0 \
+                  --max_norm 1.0 \
+                  --accum_steps 1 \
+                  --seed 2330 \
+                  --preprocessing_num_workers 12 \
+

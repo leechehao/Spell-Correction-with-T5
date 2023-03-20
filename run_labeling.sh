@@ -1,0 +1,16 @@
+python 3_labeling.py --input_file program_data/test/sentence.txt \
+                     --output_file program_data/test/dataset.csv \
+                     --prompt_config_dir models/best_model \
+                     --stop_words_file program_data/english \
+                     --typo_probability 0.5 \
+                     --max_num_typo 3 \
+                     --head_mark $ \
+                     --tail_mark @ \
+                     --data_multiple 4 \
+                     --min_num_characters 4 \
+                     --num_typo_weights 5 4 1 \
+                     --detect_prompt "detect typo:" \
+                     --correct_prompt "correct typo:" \
+                     --max_length 120 \
+                     --pretrained_model_name_or_path google/flan-t5-small \
+                     --seed 2330
