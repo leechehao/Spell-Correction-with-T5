@@ -207,17 +207,18 @@ def main():
             epochs.write(f"Validation Loss: {val_loss:.4f}", file=log_file)
             epochs.write(f"Validation Duration: {val_duration:.3f} sec", file=log_file)
 
+            if val_loss < best_val_loss:
+                model.save_pretrained(args.model_path)
+                best_val_loss = val_loss
+
             mlflow.log_metrics(
                 {
                     "train_loss": train_losses.avg,
                     "val_loss": val_loss,
+                    "best_val_loss": best_val_loss,
                 },
                 step=epoch,
             )
-
-            if val_loss < best_val_loss:
-                model.save_pretrained(args.model_path)
-                best_val_loss = val_loss
 
         ####################################
         ##########      Test      ##########
